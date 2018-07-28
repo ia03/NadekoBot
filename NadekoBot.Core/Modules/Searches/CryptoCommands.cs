@@ -64,11 +64,12 @@ namespace NadekoBot.Modules.Searches
                 await Context.Channel.EmbedAsync(new EmbedBuilder()
                     .WithOkColor()
                     .WithTitle($"{data.name} ({data.symbol})")
-                    .WithThumbnailUrl($"https://files.coinmarketcap.com/static/img/coins/32x32/{data.id}.png")
+                    .WithThumbnailUrl($"https://s2.coinmarketcap.com/static/img/coins/32x32/{data.id}.png")
                     .AddField(GetText("market_cap"), $"${data.quotes.USD.market_cap:n0}", true)
                     .AddField(GetText("price"), $"${data.quotes.USD.price}", true)
                     .AddField(GetText("volume_24h"), $"${data.quotes.USD.volume_24h:n0}", true)
-                    .AddField(GetText("change_7d_24h"), $"{data.quotes.USD.percent_change_7d}% / {data.quotes.USD.percent_change_24h}%", true)).ConfigureAwait(false);
+                    .AddField(GetText("change_7d_24h"), $"{data.quotes.USD.percent_change_7d}% / {data.quotes.USD.percent_change_24h}%", true)
+                    .WithImageUrl($"https://s2.coinmarketcap.com/generated/sparklines/web/7d/usd/{data.id}.png")).ConfigureAwait(false);
             }
         }
     }
